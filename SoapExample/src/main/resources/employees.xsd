@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://com.example.SoapExample/allapis"
+           xmlns="http://com.example.SoapExample/allapis"
+           elementFormDefault="qualified">
+
+    <!-- Define the Employee type -->
+    <xs:complexType name="Employees">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="department" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="ServiceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- AddEmployeeRequest -->
+    <xs:element name="AddEmployeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employees" type="Employees"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- AddEmployeeResponse -->
+    <xs:element name="AddEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="ServiceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Define elements for requests and responses -->
+    <xs:element name="GetEmployeesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employeeId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employees" type="Employees"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
